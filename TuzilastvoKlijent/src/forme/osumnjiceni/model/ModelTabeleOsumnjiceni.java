@@ -64,7 +64,11 @@ public class ModelTabeleOsumnjiceni extends AbstractTableModel {
             case 5:
                 return osumnjiceni.getZanimanje();
             case 6:
-                return osumnjiceni.isOsudjivanost();
+                if(osumnjiceni.isOsudjivanost()) {
+                    return "osudjivan";
+                } else {
+                    return "nije osudjivan";
+                }
             case 7:
                 return osumnjiceni.getMesto();
             default:

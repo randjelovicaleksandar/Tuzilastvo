@@ -137,9 +137,10 @@ public class Osumnjiceni implements OpstiDomenskiObjekat {
     @Override
     public String vratiVrednostiZaUpdate() {
         DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+        int osudjivanostInt = (osudjivanost) ? 1 : 0;
         return "imePrezime= '" + imePrezime + "', JMBG= '" + JMBG + "', datumRodjenja= '"
                 + df.format(datumRodjenja) + "', adresa= '"
-                + adresa + "', zanimanje= '" + zanimanje + "', mestoID= "
+                + adresa + "', zanimanje= '" + zanimanje + "', osudjivanost= '" + osudjivanostInt + "', mestoID= "
                 + mesto.getMestoID()+ " WHERE osumnjiceniID= " + osumnjiceniID;
     }
 

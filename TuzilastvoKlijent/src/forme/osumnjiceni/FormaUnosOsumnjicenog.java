@@ -32,6 +32,7 @@ public class FormaUnosOsumnjicenog extends javax.swing.JFrame {
     private GlavnaFormaKlijent glavnaFormaKlijent;
     private List<Predmet> listaPredmeta;
     boolean osudjivanost = false;
+    ButtonGroup bg;
     
     /**
      * Creates new form FormaUnosClana
@@ -44,6 +45,7 @@ public class FormaUnosOsumnjicenog extends javax.swing.JFrame {
         jbtnIzmeni.setEnabled(btnIzmeni);
         
         postaviKomponente();
+
         
     }
 
@@ -86,6 +88,7 @@ public class FormaUnosOsumnjicenog extends javax.swing.JFrame {
         jrbNe = new javax.swing.JRadioButton();
         jlblPrezime = new javax.swing.JLabel();
         jlbDatum = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
         jbtnUnesi = new javax.swing.JButton();
         jbtnObrisi = new javax.swing.JButton();
         jbtnIzmeni = new javax.swing.JButton();
@@ -167,6 +170,17 @@ public class FormaUnosOsumnjicenog extends javax.swing.JFrame {
 
         jlbDatum.setText(".");
 
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -205,7 +219,9 @@ public class FormaUnosOsumnjicenog extends javax.swing.JFrame {
                                 .addComponent(jrbDa)
                                 .addGap(36, 36, 36)
                                 .addComponent(jrbNe)))
-                        .addGap(0, 184, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(42, 42, 42))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
@@ -257,16 +273,22 @@ public class FormaUnosOsumnjicenog extends javax.swing.JFrame {
                     .addComponent(jtxtZanimanje, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(4, 4, 4)
                 .addComponent(jlblZanimanje)
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel8)
-                    .addComponent(jrbDa)
-                    .addComponent(jrbNe))
-                .addGap(27, 27, 27)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel9)
-                    .addComponent(jcmbMesto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(26, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel8)
+                            .addComponent(jrbDa)
+                            .addComponent(jrbNe))
+                        .addGap(27, 27, 27)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel9)
+                            .addComponent(jcmbMesto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap(26, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())))
         );
 
         jbtnUnesi.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
@@ -376,11 +398,22 @@ public class FormaUnosOsumnjicenog extends javax.swing.JFrame {
     }//GEN-LAST:event_jbtnObrisiActionPerformed
 
     private void jbtnIzmeniActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnIzmeniActionPerformed
+        jrbDa.setActionCommand("osudjivan");
+        jrbNe.setActionCommand("nije osudjivan");
+        
+        if(bg.getSelection().getActionCommand() == "osudjivan") {
+            osudjivanost = true;
+        } else if (bg.getSelection().getActionCommand() == "nije osudjivan") {
+            osudjivanost = false;
+        }
+        
+        System.out.println(osudjivanost);
+        
         try {
             TransferObjekatZahtev zahtev = new TransferObjekatZahtev();
             if (validateFields()) {
                 zahtev.setOperacija(Operacija.IZMENA_OSUMNJICENOG);
-                Osumnjiceni osumnjiceniIzmena = new Osumnjiceni(this.osumnjiceni.getOsumnjiceniID(), jtxtIme.getText() + jtxtPrezime.getText(), jtxtMaticniBroj.getText(), jdcDatumRodjenja.getDate(), jtxtAdresa.getText(), jtxtZanimanje.getText(), osudjivanost, (Mesto) jcmbMesto.getSelectedItem());
+                Osumnjiceni osumnjiceniIzmena = new Osumnjiceni(this.osumnjiceni.getOsumnjiceniID(), jtxtIme.getText() + " " + jtxtPrezime.getText(), jtxtMaticniBroj.getText(), jdcDatumRodjenja.getDate(), jtxtAdresa.getText(), jtxtZanimanje.getText(), osudjivanost , (Mesto) jcmbMesto.getSelectedItem());
                 zahtev.setParametar(osumnjiceniIzmena);
                 Komunikacija.getInstance().posaljiZahtev(zahtev);
                 TransferObjekatOdgovor odgovor = Komunikacija.getInstance().primiOdgovor();
@@ -399,10 +432,12 @@ public class FormaUnosOsumnjicenog extends javax.swing.JFrame {
 
     private void jrbNeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrbNeActionPerformed
         osudjivanost = false;
+        jrbNe.setSelected(osudjivanost);
     }//GEN-LAST:event_jrbNeActionPerformed
 
     private void jrbDaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrbDaActionPerformed
         osudjivanost = true;
+        jrbDa.setSelected(osudjivanost);
     }//GEN-LAST:event_jrbDaActionPerformed
 
     private void jtxtAdresaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtxtAdresaActionPerformed
@@ -419,6 +454,7 @@ public class FormaUnosOsumnjicenog extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JButton jbtnIzmeni;
     private javax.swing.JButton jbtnObrisi;
     private javax.swing.JButton jbtnUnesi;
@@ -472,7 +508,7 @@ public class FormaUnosOsumnjicenog extends javax.swing.JFrame {
         jtxtZanimanje.setText(osumnjiceni.getZanimanje());
         jcmbMesto.getModel().setSelectedItem(osumnjiceni.getMesto());
         
-        if(osudjivanost) {
+        if(osumnjiceni.isOsudjivanost()) {
             jrbDa.setSelected(true);
         } else {
             jrbNe.setSelected(true);
@@ -560,7 +596,7 @@ public class FormaUnosOsumnjicenog extends javax.swing.JFrame {
     }
 
     private void groupButton() {
-        ButtonGroup bg = new ButtonGroup();
+        bg = new ButtonGroup();
         bg.add(jrbDa);
         bg.add(jrbNe);
     }
