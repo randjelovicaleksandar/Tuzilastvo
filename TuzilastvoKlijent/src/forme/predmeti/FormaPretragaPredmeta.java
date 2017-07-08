@@ -3,15 +3,16 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package forme.osumnjiceni;
+package forme.predmeti;
 
-import forme.osumnjiceni.model.ModelTabeleOsumnjiceni;
+
+import forme.predmeti.model.ModelTabelePredmet;
 import java.util.LinkedList;
 import java.util.List;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 import komunikacija.Komunikacija;
-import model.Osumnjiceni;
+import model.Predmet;
 import transfer.TransferObjekatOdgovor;
 import transfer.TransferObjekatZahtev;
 import util.Operacija;
@@ -20,15 +21,15 @@ import util.Operacija;
  *
  * @author  Aleksandar Randjelovic
  */
-public class FormaPretragaOsumnjicenih extends javax.swing.JFrame {
+public class FormaPretragaPredmeta extends javax.swing.JFrame {
 
-    private List<Osumnjiceni> listaOsumnjicenih;
-    private String[] poljaZaPretragu = {"Ime i prezime", "JMBG", "Mesto", "Zanimanje"};
+    private List<Predmet> listaPredmeta;
+    private String[] poljaZaPretragu = {"Delo", "Stanje predmeta", "Tuzilac"};
 
     /**
      * Creates new form FormaPretragaClanova
      */
-    public FormaPretragaOsumnjicenih() {
+    public FormaPretragaPredmeta() {
         initComponents();
         setLocationRelativeTo(null);
         postaviKomponente();
@@ -50,15 +51,15 @@ public class FormaPretragaOsumnjicenih extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jtxtVredenostPretrage = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jtabelaOsumnjiceni = new javax.swing.JTable();
-        jbtnPretragaOsumnjicenih = new javax.swing.JButton();
+        jtabelaPredmeti = new javax.swing.JTable();
+        jbtnPretragaPredmeta = new javax.swing.JButton();
         jbtnPrikaziPodatke = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Pretraga clana");
         setResizable(false);
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Detalji pretrage clana", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 16))); // NOI18N
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Detalji pretrage predmeta", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 16))); // NOI18N
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
         jLabel1.setText("Kriterijum pretrage:");
@@ -104,7 +105,7 @@ public class FormaPretragaOsumnjicenih extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jtabelaOsumnjiceni.setModel(new javax.swing.table.DefaultTableModel(
+        jtabelaPredmeti.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -115,23 +116,24 @@ public class FormaPretragaOsumnjicenih extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jtabelaOsumnjiceni.addMouseListener(new java.awt.event.MouseAdapter() {
+        jtabelaPredmeti.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jtabelaOsumnjiceniMouseClicked(evt);
+                jtabelaPredmetiMouseClicked(evt);
             }
         });
-        jScrollPane1.setViewportView(jtabelaOsumnjiceni);
+        jScrollPane1.setViewportView(jtabelaPredmeti);
 
-        jbtnPretragaOsumnjicenih.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
-        jbtnPretragaOsumnjicenih.setText("Pretraga osumnjicenih");
-        jbtnPretragaOsumnjicenih.addActionListener(new java.awt.event.ActionListener() {
+        jbtnPretragaPredmeta.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
+        jbtnPretragaPredmeta.setText("Pretraga predmeta");
+        jbtnPretragaPredmeta.setToolTipText("");
+        jbtnPretragaPredmeta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbtnPretragaOsumnjicenihActionPerformed(evt);
+                jbtnPretragaPredmetaActionPerformed(evt);
             }
         });
 
         jbtnPrikaziPodatke.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
-        jbtnPrikaziPodatke.setText("Detaljni podaci o osumnjicenom");
+        jbtnPrikaziPodatke.setText("Detaljni podaci o predmetu");
         jbtnPrikaziPodatke.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbtnPrikaziPodatkeActionPerformed(evt);
@@ -150,7 +152,7 @@ public class FormaPretragaOsumnjicenih extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jbtnPrikaziPodatke, javax.swing.GroupLayout.PREFERRED_SIZE, 283, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jbtnPretragaOsumnjicenih, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jbtnPretragaPredmeta, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -162,7 +164,7 @@ public class FormaPretragaOsumnjicenih extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jbtnPrikaziPodatke, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jbtnPretragaOsumnjicenih, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jbtnPretragaPredmeta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(18, 18, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -172,68 +174,61 @@ public class FormaPretragaOsumnjicenih extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jbtnPrikaziPodatkeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnPrikaziPodatkeActionPerformed
-        int selectedRow = jtabelaOsumnjiceni.getSelectedRow();
-        ModelTabeleOsumnjiceni model = (ModelTabeleOsumnjiceni) jtabelaOsumnjiceni.getModel();
-        Osumnjiceni osumnjiceni = model.vratiOsumnjicenog(selectedRow);
-        FormaUnosOsumnjicenog fuo = new FormaUnosOsumnjicenog(false,true,true,this);
-        fuo.postaviPodatkeOOsumnjicenom(osumnjiceni);
-//        fuo.postaviIzgledForme(OperacijaForme.UPRAVLJANJE);
-        fuo.setVisible(true);
+        
+        int selectedRow = jtabelaPredmeti.getSelectedRow();
+        ModelTabelePredmet model = (ModelTabelePredmet) jtabelaPredmeti.getModel();
+        Predmet predemt = model.vratiPredmet(selectedRow);
+        FormaUnosPredmeta fup = new FormaUnosPredmeta(false,true,true,this);
+        fup.postaviPodatkeOPredemtu(predemt);
+        fup.setVisible(true);
     }//GEN-LAST:event_jbtnPrikaziPodatkeActionPerformed
 
-    private void jtabelaOsumnjiceniMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtabelaOsumnjiceniMouseClicked
+    private void jtabelaPredmetiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtabelaPredmetiMouseClicked
         jbtnPrikaziPodatke.setEnabled(true);
-    }//GEN-LAST:event_jtabelaOsumnjiceniMouseClicked
+    }//GEN-LAST:event_jtabelaPredmetiMouseClicked
 
-    private void jbtnPretragaOsumnjicenihActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnPretragaOsumnjicenihActionPerformed
+    private void jbtnPretragaPredmetaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnPretragaPredmetaActionPerformed
         String vrednostPretrage = jtxtVredenostPretrage.getText().toLowerCase().trim();
         String poljeZaPretragu = (String) jcmbKriterijumPretrage.getSelectedItem();
 
-        List<Osumnjiceni> filtriranaListaOsumnjicenih = new LinkedList<>();
+        List<Predmet> filtriranaListaPredmeta = new LinkedList<>();
         if (vrednostPretrage.equals("")) {
-            filtriranaListaOsumnjicenih = listaOsumnjicenih;
+            filtriranaListaPredmeta = listaPredmeta;
             JOptionPane.showMessageDialog(this, "Unesite vrednost pretrage.");
         } else {
             switch (poljeZaPretragu) {
-                case "Ime i prezime":
-                    for (Osumnjiceni osumnjiceni : listaOsumnjicenih) {
-                        if (osumnjiceni.getImePrezime().toLowerCase().contains(vrednostPretrage)) {
-                            filtriranaListaOsumnjicenih.add(osumnjiceni);
+                case "Delo":
+                    for (Predmet predmet : listaPredmeta) {
+                        if (predmet.getDelo().toLowerCase().equals(vrednostPretrage)) {
+                            filtriranaListaPredmeta.add(predmet);
                         }
                     }
                     break;
-                case "JMBG":
-                    for (Osumnjiceni osumnjiceni : listaOsumnjicenih) {
-                        if (osumnjiceni.getJMBG().startsWith(vrednostPretrage)) {
-                            filtriranaListaOsumnjicenih.add(osumnjiceni);
+                case "Stanje predmeta":
+                    for (Predmet predmet : listaPredmeta) {
+                        if (predmet.getStanjePredmeta().toLowerCase().equals(vrednostPretrage)) {
+                            filtriranaListaPredmeta.add(predmet);
                         }
                     }
                     break;
-                case "Mesto":
-                    for (Osumnjiceni osumnjiceni : listaOsumnjicenih) {
-                        if (osumnjiceni.getMesto().toString().toLowerCase().contains(vrednostPretrage)) {
-                            filtriranaListaOsumnjicenih.add(osumnjiceni);
-                        }
-                    }
-                    break;
-                case "Zanimanje":
-                    for (Osumnjiceni osumnjiceni : listaOsumnjicenih) {
-                        if (osumnjiceni.getZanimanje().toLowerCase().contains(vrednostPretrage)) {
-                            filtriranaListaOsumnjicenih.add(osumnjiceni);
+                case "Tuzilac":
+                    for (Predmet predmet : listaPredmeta) {
+                        if (predmet.getTuzilac().toString().toLowerCase().contains(vrednostPretrage)) {
+                            filtriranaListaPredmeta.add(predmet);
                         }
                     }
                     break;
                 default:
-                    filtriranaListaOsumnjicenih = listaOsumnjicenih;
+                    filtriranaListaPredmeta = listaPredmeta;
             }
         }
-        if(filtriranaListaOsumnjicenih.isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Sistem ne moze da nadje osumnjicenog po zadatoj vrednosti");
+        if(filtriranaListaPredmeta.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Sistem ne moze da nadje predmet po zadatoj vrednosti");
             return;
         }
-        ModelTabeleOsumnjiceni model = new ModelTabeleOsumnjiceni(filtriranaListaOsumnjicenih);
-        jtabelaOsumnjiceni.setModel(model);
-    }//GEN-LAST:event_jbtnPretragaOsumnjicenihActionPerformed
+        ModelTabelePredmet model = new ModelTabelePredmet(filtriranaListaPredmeta);
+        jtabelaPredmeti.setModel(model);
+    }//GEN-LAST:event_jbtnPretragaPredmetaActionPerformed
 
     private void jcmbKriterijumPretrageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcmbKriterijumPretrageActionPerformed
         // TODO add your handling code here:
@@ -244,10 +239,10 @@ public class FormaPretragaOsumnjicenih extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JButton jbtnPretragaOsumnjicenih;
+    private javax.swing.JButton jbtnPretragaPredmeta;
     private javax.swing.JButton jbtnPrikaziPodatke;
     private javax.swing.JComboBox jcmbKriterijumPretrage;
-    private javax.swing.JTable jtabelaOsumnjiceni;
+    private javax.swing.JTable jtabelaPredmeti;
     private javax.swing.JTextField jtxtVredenostPretrage;
     // End of variables declaration//GEN-END:variables
 
@@ -261,31 +256,31 @@ public class FormaPretragaOsumnjicenih extends javax.swing.JFrame {
     private void postaviTabelu() {
         try {
             TransferObjekatZahtev zahtev = new TransferObjekatZahtev();
-            zahtev.setOperacija(Operacija.VRATI_OSUMNJICENE);
+            zahtev.setOperacija(Operacija.VRATI_PREDMETE);
             Komunikacija.getInstance().posaljiZahtev(zahtev);
             TransferObjekatOdgovor odgovor = Komunikacija.getInstance().primiOdgovor();
             if (odgovor.getIzuzetak() != null) {
                 JOptionPane.showMessageDialog(this, (String) odgovor.getIzuzetak());
                 return;
             }
-            listaOsumnjicenih = (List<Osumnjiceni>) odgovor.getRezultat();
-            ModelTabeleOsumnjiceni modelTabele = new ModelTabeleOsumnjiceni(listaOsumnjicenih);
-            jtabelaOsumnjiceni.setModel(modelTabele);
+            listaPredmeta = (List<Predmet>) odgovor.getRezultat();
+            ModelTabelePredmet modelTabele = new ModelTabelePredmet(listaPredmeta);
+            jtabelaPredmeti.setModel(modelTabele);
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "Server je ugasen. Gasenje klijenta!");
             System.exit(0);
         }
     }
 
-    void obrisiRed(Osumnjiceni osumnjiceni) {
+    void obrisiRed(Predmet predmet) {
         jbtnPrikaziPodatke.setEnabled(false);
-        ModelTabeleOsumnjiceni model = (ModelTabeleOsumnjiceni) jtabelaOsumnjiceni.getModel();
-        model.obrisiRed(osumnjiceni);
+        ModelTabelePredmet model = (ModelTabelePredmet) jtabelaPredmeti.getModel();
+        model.obrisiRed(predmet);
     }
 
-    void izmeniRed(Osumnjiceni osumnjiceni) {
+    void izmeniRed(Predmet predmet) {
         jbtnPrikaziPodatke.setEnabled(false);
-        ModelTabeleOsumnjiceni model = (ModelTabeleOsumnjiceni) jtabelaOsumnjiceni.getModel();
-        model.izmeniRed(osumnjiceni);
+        ModelTabelePredmet model = (ModelTabelePredmet) jtabelaPredmeti.getModel();
+        model.izmeniRed(predmet);
     }
 }

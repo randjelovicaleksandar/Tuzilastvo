@@ -104,14 +104,14 @@ public class Predmet implements OpstiDomenskiObjekat {
 
     @Override
     public String vratiVrednostiZaInsert() {
-        return null + ", '" + delo + "', '" + opisDela + "', " + obrazlozenje + ", " + stanjePredmeta + ", '" + tuzilac.getTuzilacID();
+        return null + ", '" + delo + "', '" + opisDela + "', '" + obrazlozenje + "', '" + stanjePredmeta + "', '" + tuzilac.getTuzilacID() + "'";
     }
 
     @Override
     public String vratiVrednostiZaUpdate() {
-        return "delo = '" + delo + "', opisDela= '" + opisDela + "', obrazlozenje= " + obrazlozenje + ", stanjePredmeta= "
-                + stanjePredmeta + "', tuzilacID= "
-                + tuzilac.getTuzilacID() + " WHERE predmetID= " + predmetID;
+        return "delo = '" + delo + "', opisDela= '" + opisDela + "', obrazlozenje= '" + obrazlozenje + "', stanjePredmeta= '"
+                + stanjePredmeta + "', tuzilacID= '"
+                + tuzilac.getTuzilacID() + "' WHERE predmetID= '" + predmetID + "'";
     }
 
     @Override
@@ -159,7 +159,7 @@ public class Predmet implements OpstiDomenskiObjekat {
 
     @Override
     public String vratiUslovZaProveru() {
-        return " JOIN vodjenje USING(predmetID) JOIN osumnjiceni USING(osumnjiceniID) where predmetID= " + predmetID;
+        return "where predmetID= " + predmetID;
     }
 
 }

@@ -81,7 +81,7 @@ public class ModelTabeleOsumnjiceni extends AbstractTableModel {
         return false;
     }
 
-    public Osumnjiceni vratiClana(int selectedRow) {
+    public Osumnjiceni vratiOsumnjicenog(int selectedRow) {
         return listaOsumnjicenih.get(selectedRow);
     }
 

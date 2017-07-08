@@ -9,6 +9,7 @@ import forme.GlavnaFormaKlijent;
 import java.util.Date;
 import java.util.List;
 import javax.swing.ButtonGroup;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import komunikacija.Komunikacija;
@@ -37,9 +38,23 @@ public class FormaUnosOsumnjicenog extends javax.swing.JFrame {
     /**
      * Creates new form FormaUnosClana
      */
-    public FormaUnosOsumnjicenog(boolean btnUnesi, boolean btnObrisi, boolean btnIzmeni) {
+    public FormaUnosOsumnjicenog(boolean btnUnesi, boolean btnObrisi, boolean btnIzmeni, JFrame forma) {
         initComponents();
         
+        formaPretragaOsumnjicenih = (FormaPretragaOsumnjicenih) forma;
+        
+        jbtnUnesi.setEnabled(btnUnesi);
+        jbtnObrisi.setEnabled(btnObrisi);
+        jbtnIzmeni.setEnabled(btnIzmeni);
+        
+        postaviKomponente();
+
+        
+    }
+    
+    public FormaUnosOsumnjicenog(boolean btnUnesi, boolean btnObrisi, boolean btnIzmeni) {
+        initComponents();
+                
         jbtnUnesi.setEnabled(btnUnesi);
         jbtnObrisi.setEnabled(btnObrisi);
         jbtnIzmeni.setEnabled(btnIzmeni);
@@ -97,7 +112,7 @@ public class FormaUnosOsumnjicenog extends javax.swing.JFrame {
         setTitle("Unos clana");
         setResizable(false);
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Detalji o clanu", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 16))); // NOI18N
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Detalji o osumnjicenom", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 16))); // NOI18N
         jPanel1.setToolTipText("");
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
@@ -292,7 +307,7 @@ public class FormaUnosOsumnjicenog extends javax.swing.JFrame {
         );
 
         jbtnUnesi.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
-        jbtnUnesi.setText("Unesi clana");
+        jbtnUnesi.setText("Unesi osumnjicenog");
         jbtnUnesi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbtnUnesiActionPerformed(evt);
@@ -300,7 +315,7 @@ public class FormaUnosOsumnjicenog extends javax.swing.JFrame {
         });
 
         jbtnObrisi.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
-        jbtnObrisi.setText("Obrisi clana");
+        jbtnObrisi.setText("Obrisi osumnjicenog");
         jbtnObrisi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbtnObrisiActionPerformed(evt);
@@ -324,10 +339,10 @@ public class FormaUnosOsumnjicenog extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jbtnUnesi, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(38, 38, 38)
-                        .addComponent(jbtnObrisi, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jbtnUnesi, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jbtnObrisi, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jbtnIzmeni, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(19, Short.MAX_VALUE))
         );
@@ -477,7 +492,7 @@ public class FormaUnosOsumnjicenog extends javax.swing.JFrame {
 
     private void postaviKomponente() {
         setLocationRelativeTo(null);
-        this.setTitle("Unos clana");
+        this.setTitle("Unos osumnjicenog");
         groupButton();
         this.repaint();
         this.pack();

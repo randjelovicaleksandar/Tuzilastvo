@@ -146,7 +146,7 @@ public class Osumnjiceni implements OpstiDomenskiObjekat {
 
     @Override
     public String vratiUslovZaBrisanje() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return " osumnjiceniID= " + osumnjiceniID;
     }
 
     @Override

@@ -23,6 +23,14 @@ public class Validacija {
             return true; // validation successful
         }
     }
+    
+    public static boolean validateTextAreaField(JTextArea f, JLabel label, String errormsg) {
+        if (f == null || f.getText().equals("")) {
+            return failedMessage(f, label, errormsg);
+        } else {
+            return true; // validation successful
+        }
+    }
 
     public static boolean validateInteger(JTextField f, JLabel label, String errormsg, int count, String vrstaProvere) {
         try {  // try to convert input to integer

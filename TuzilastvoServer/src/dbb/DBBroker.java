@@ -154,7 +154,7 @@ public class DBBroker {
             System.out.println(sql);
             Statement sqlStatement = conn.createStatement();
             ResultSet rs = sqlStatement.executeQuery(sql);
-            if(rs.next()) {
+            if(!rs.next()) {
                 throw new Exception("Objekat ne moze da se obrise!");
             }
         } catch (Exception ex) {

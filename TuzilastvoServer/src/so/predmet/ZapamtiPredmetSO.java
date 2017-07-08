@@ -6,7 +6,7 @@
 package so.predmet;
 
 import dbb.DBBroker;
-import model.Osumnjiceni;
+import model.Predmet;
 import so.OpstaSO;
 
 /**
@@ -22,10 +22,10 @@ public class ZapamtiPredmetSO extends OpstaSO {
 
     @Override
     protected void izvrsiKonkretnuOperaciju(Object obj) throws Exception {
-        if (DBBroker.getInstance().proveriDaLiPostoji((Osumnjiceni) obj) == true) {
-            DBBroker.getInstance().sacuvaj((Osumnjiceni) obj);
+        if (!DBBroker.getInstance().proveriDaLiPostoji((Predmet) obj) == true) {
+            DBBroker.getInstance().sacuvaj((Predmet) obj);
         } else {
-            DBBroker.getInstance().izmeni((Osumnjiceni) obj);
+            DBBroker.getInstance().izmeni((Predmet) obj);
         }
     }
 

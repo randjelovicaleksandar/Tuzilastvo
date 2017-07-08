@@ -8,7 +8,7 @@ package so.predmet;
 import dbb.DBBroker;
 import java.util.List;
 import model.OpstiDomenskiObjekat;
-import model.Osumnjiceni;
+import model.Predmet;
 import so.OpstaSO;
 
 /**
@@ -33,7 +33,7 @@ public class PronadjiPredmeteSO extends OpstaSO {
 
     @Override
     protected void izvrsiKonkretnuOperaciju(Object obj) throws Exception {
-        DBBroker.getInstance().vratiSveJoin((Osumnjiceni) obj);
+        listaPredmeta = DBBroker.getInstance().vratiSveJoin((Predmet) obj);
     }
 
 }

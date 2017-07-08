@@ -8,6 +8,8 @@ package forme;
 import forme.login.LoginForma;
 import forme.osumnjiceni.FormaPretragaOsumnjicenih;
 import forme.osumnjiceni.FormaUnosOsumnjicenog;
+import forme.predmeti.FormaPretragaPredmeta;
+import forme.predmeti.FormaUnosPredmeta;
 import forme.tuzioci.FormaPretragaTuzilaca;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
@@ -29,6 +31,8 @@ public class GlavnaFormaKlijent extends javax.swing.JFrame {
     private FormaUnosOsumnjicenog fuo;
     private FormaPretragaOsumnjicenih fpo;
     private FormaPretragaTuzilaca fpt;
+    private FormaUnosPredmeta fup;
+    private FormaPretragaPredmeta fpp;
     private String userName;
 
     /**
@@ -149,7 +153,7 @@ public class GlavnaFormaKlijent extends javax.swing.JFrame {
         jMenu2.setMargin(new java.awt.Insets(0, 5, 0, 5));
 
         jMenuItem3.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
-        jMenuItem3.setText("Unos filma");
+        jMenuItem3.setText("Unos predmeta");
         jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem3ActionPerformed(evt);
@@ -158,7 +162,7 @@ public class GlavnaFormaKlijent extends javax.swing.JFrame {
         jMenu2.add(jMenuItem3);
 
         jMenuItem4.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
-        jMenuItem4.setText("Pretraga filma");
+        jMenuItem4.setText("Pretraga predmeta");
         jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem4ActionPerformed(evt);
@@ -179,7 +183,6 @@ public class GlavnaFormaKlijent extends javax.swing.JFrame {
         jMenuItem5.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
         jMenuItem5.setText("Pretraga tuzilaca");
         jMenuItem5.setToolTipText("");
-        jMenuItem5.setActionCommand("Pretraga tuzilaca");
         jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem5ActionPerformed(evt);
@@ -221,13 +224,13 @@ public class GlavnaFormaKlijent extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
-//        FormaUnosFilma fuf = new FormaUnosFilma();
-//        fuf.setVisible(true);
+        fup = new FormaUnosPredmeta(true, false, false);
+        fup.setVisible(true);
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
-//        FormaPretragaFilmova fpf = new FormaPretragaFilmova();
-//        fpf.setVisible(true);
+        fpp = new FormaPretragaPredmeta();
+        fpp.setVisible(true);
     }//GEN-LAST:event_jMenuItem4ActionPerformed
 
     private void jbtnLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnLogoutActionPerformed
