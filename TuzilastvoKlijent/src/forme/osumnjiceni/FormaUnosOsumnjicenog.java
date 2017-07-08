@@ -83,12 +83,12 @@ public class FormaUnosOsumnjicenog extends javax.swing.JFrame {
         jlblMaticni = new javax.swing.JLabel();
         jlblAdresa = new javax.swing.JLabel();
         jlblZanimanje = new javax.swing.JLabel();
-        jdcDatumRodjenja = new com.toedter.calendar.JDateChooser();
         jrbDa = new javax.swing.JRadioButton();
         jrbNe = new javax.swing.JRadioButton();
         jlblPrezime = new javax.swing.JLabel();
         jlbDatum = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
+        jdcDatumRodjenja = new com.toedter.calendar.JDateChooser();
         jbtnUnesi = new javax.swing.JButton();
         jbtnObrisi = new javax.swing.JButton();
         jbtnIzmeni = new javax.swing.JButton();
@@ -149,9 +149,6 @@ public class FormaUnosOsumnjicenog extends javax.swing.JFrame {
 
         jlblZanimanje.setText(".");
 
-        jdcDatumRodjenja.setDateFormatString("yyyy-MM-dd");
-        jdcDatumRodjenja.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
-
         jrbDa.setText("Da");
         jrbDa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -181,6 +178,9 @@ public class FormaUnosOsumnjicenog extends javax.swing.JFrame {
             .addGap(0, 100, Short.MAX_VALUE)
         );
 
+        jdcDatumRodjenja.setDateFormatString("yyyy-MM-dd");
+        jdcDatumRodjenja.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -200,10 +200,10 @@ public class FormaUnosOsumnjicenog extends javax.swing.JFrame {
                             .addComponent(jlbDatum, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jlblPrezime, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jtxtMaticniBroj, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jdcDatumRodjenja, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jlblIme, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jtxtIme)
-                            .addComponent(jtxtPrezime)))
+                            .addComponent(jtxtPrezime)
+                            .addComponent(jdcDatumRodjenja, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(166, 166, 166)
                         .addComponent(jlblZanimanje, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -249,11 +249,11 @@ public class FormaUnosOsumnjicenog extends javax.swing.JFrame {
                     .addComponent(jLabel2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jlblPrezime)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(12, 12, 12)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jdcDatumRodjenja, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addComponent(jLabel3)
+                    .addComponent(jdcDatumRodjenja, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(12, 12, 12)
                 .addComponent(jlbDatum)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -265,7 +265,7 @@ public class FormaUnosOsumnjicenog extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jtxtAdresa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jlblAdresa)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -341,7 +341,7 @@ public class FormaUnosOsumnjicenog extends javax.swing.JFrame {
                     .addComponent(jbtnUnesi, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jbtnObrisi, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jbtnIzmeni, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(41, Short.MAX_VALUE))
+                .addContainerGap(35, Short.MAX_VALUE))
         );
 
         pack();

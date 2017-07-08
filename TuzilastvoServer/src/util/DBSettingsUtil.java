@@ -17,7 +17,7 @@ import java.util.Properties;
  */
 public class DBSettingsUtil {
 
-    private Properties properties;
+    private final Properties properties;
     private static DBSettingsUtil instance;
 
     private DBSettingsUtil() throws IOException {
