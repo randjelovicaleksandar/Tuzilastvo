@@ -18,6 +18,7 @@ import model.Korisnik;
 import model.OpstiDomenskiObjekat;
 import model.Osumnjiceni;
 import model.Predmet;
+import model.Vodjenje;
 import transfer.TransferObjekatOdgovor;
 import transfer.TransferObjekatZahtev;
 import util.Operacija;
@@ -105,15 +106,30 @@ public class KlijentNit extends Thread {
                         odgovor.setRezultat(listaTuzioca);
                         odgovor.setPoruka("Ucitana je lista Tuzioca.");
                         break;
+                    case Operacija.VRATI_VODJENJA:
+                        List<OpstiDomenskiObjekat> listaVodjenja = Kontroler.getInstance().vratiVodjenja();
+                        odgovor.setRezultat(listaVodjenja);
+                        odgovor.setPoruka("Ucitana je lista vodjenja.");
+                        break;
                     case Operacija.UNOS_PREDMETA:
                         Predmet predmet = (Predmet) zahtev.getParametar();
                         Kontroler.getInstance().dodajPredmet(predmet);
                         odgovor.setPoruka("Predmet je uspesno sacuvan.");
                         break;
+                    case Operacija.UNOS_VODJENJA:
+                        Vodjenje vodjenje = (Vodjenje) zahtev.getParametar();
+                        Kontroler.getInstance().dodajVodjenje(vodjenje);
+                        odgovor.setPoruka("Vodjenje je uspesno sacuvano.");
+                        break;
                     case Operacija.IZMENA_PREDMETA:
                         Predmet predmetIzmena = (Predmet) zahtev.getParametar();
                         Kontroler.getInstance().izmeniPredmet(predmetIzmena);
                         odgovor.setPoruka("Predmet je uspesno izmenjen.");
+                        break;
+                    case Operacija.IZMENA_VODJENJA:
+                        Vodjenje vodjenjeIzmena = (Vodjenje) zahtev.getParametar();
+                        Kontroler.getInstance().izmeniVodjenje(vodjenjeIzmena);
+                        odgovor.setPoruka("Vodjenje je uspesno izmenjeno.");
                         break;
                     case Operacija.BRISANJE_OSUMNJICENOG:
                         Osumnjiceni osumnjiceniBrisanje = (Osumnjiceni) zahtev.getParametar();
@@ -124,7 +140,12 @@ public class KlijentNit extends Thread {
                         Predmet predmetBrisanje = (Predmet) zahtev.getParametar();
                         Kontroler.getInstance().obrisiPredmet(predmetBrisanje);
                         odgovor.setPoruka("Predmet je uspesno obrisan.");
-                        break;     
+                        break; 
+                    case Operacija.BRISANJE_VODJENJA:
+                        Vodjenje vodjenjeBrisanje = (Vodjenje) zahtev.getParametar();
+                        Kontroler.getInstance().obrisiVodjenje(vodjenjeBrisanje);
+                        odgovor.setPoruka("Vodjenje je uspesno obrisano.");
+                        break; 
                     case Operacija.KRAJ:
                         Kontroler.getInstance().obrisiKlijentskuNit(this);
                         odgovor.setPoruka("Izlogovao se korisnik!");

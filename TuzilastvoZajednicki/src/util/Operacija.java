@@ -23,6 +23,8 @@ public class Operacija {
     public static final int BRISANJE_PREDMETA = 10;
     public static final int LOGIN = 11;
     public static final int KRAJ = 12;
-
-
+    public static final int VRATI_VODJENJA = 13;
+    public static final int UNOS_VODJENJA = 14;
+    public static final int IZMENA_VODJENJA = 15;
+    public static final int BRISANJE_VODJENJA = 16;
 }

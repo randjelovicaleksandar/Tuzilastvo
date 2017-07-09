@@ -31,10 +31,7 @@ public class FormaUnosPredmeta extends javax.swing.JFrame {
     boolean osudjivanost = false;
     ButtonGroup bg;
     private Predmet predmet;
-    
-    /**
-     * Creates new form FormaUnosClana
-     */
+
     public FormaUnosPredmeta(boolean btnUnesi, boolean btnObrisi, boolean btnIzmeni, JFrame forma) {
         initComponents();
         formaPretragaPredmeta = (FormaPretragaPredmeta) forma;
@@ -95,7 +92,7 @@ public class FormaUnosPredmeta extends javax.swing.JFrame {
         jbtnIzmeni = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Unos clana");
+        setTitle("Unos predmeta");
         setResizable(false);
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Detalji o predmetu", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 16))); // NOI18N
@@ -294,7 +291,6 @@ public class FormaUnosPredmeta extends javax.swing.JFrame {
                 }
             }
         } catch (Exception ex) {
-//            JOptionPane.showMessageDialog(this, "Sistem ne moze da unese clana!");
             JOptionPane.showMessageDialog(this, ex.getMessage());
         }
     }//GEN-LAST:event_jbtnUnesiActionPerformed
@@ -378,7 +374,7 @@ public class FormaUnosPredmeta extends javax.swing.JFrame {
 
     void postaviIzgledForme(int operacijaForme) {
         if (operacijaForme == OperacijaForme.UPRAVLJANJE) {
-            this.setTitle("Izmena/brisanje clana");
+            this.setTitle("Izmena/brisanje predmeta");
             jbtnUnesi.setVisible(false);
             jbtnIzmeni.setVisible(true);
             jbtnObrisi.setVisible(true);
@@ -398,7 +394,6 @@ public class FormaUnosPredmeta extends javax.swing.JFrame {
 
     public boolean validateFields() {
 
-        //ime, prezime, datumUclanjenja, brojRacuna, maticniBroj, ulica, broj, kontaktTelefon
         podesiLabele(true);
         podesiVrednostLabela("");
 

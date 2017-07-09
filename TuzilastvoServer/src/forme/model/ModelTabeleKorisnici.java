@@ -11,7 +11,7 @@ import nit.KlijentNit;
 
 /**
  *
- * @author vsvicevic
+ * @author Aleksandar Randjelovic
  */
 public class ModelTabeleKorisnici extends AbstractTableModel {
 

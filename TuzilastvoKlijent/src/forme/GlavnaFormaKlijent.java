@@ -11,6 +11,8 @@ import forme.osumnjiceni.FormaUnosOsumnjicenog;
 import forme.predmeti.FormaPretragaPredmeta;
 import forme.predmeti.FormaUnosPredmeta;
 import forme.tuzioci.FormaPretragaTuzilaca;
+import forme.vodjenja.FormaPretragaVodjenja;
+import forme.vodjenja.FormaUnosVodjenja;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.io.IOException;
@@ -33,6 +35,8 @@ public class GlavnaFormaKlijent extends javax.swing.JFrame {
     private FormaPretragaTuzilaca fpt;
     private FormaUnosPredmeta fup;
     private FormaPretragaPredmeta fpp;
+    private FormaPretragaVodjenja fpv;
+    private FormaUnosVodjenja fuv;
     private String userName;
 
     /**
@@ -70,6 +74,8 @@ public class GlavnaFormaKlijent extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jlbluserName = new javax.swing.JLabel();
+        btnVodjenje = new javax.swing.JButton();
+        btnUnosVodjenja = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem2 = new javax.swing.JMenuItem();
@@ -81,7 +87,7 @@ public class GlavnaFormaKlijent extends javax.swing.JFrame {
         jMenuItem5 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Iznajmljivanje filmova");
+        setTitle("Vodjenje predmeta");
 
         jbtnLogout.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
         jbtnLogout.setText("Logout");
@@ -119,6 +125,22 @@ public class GlavnaFormaKlijent extends javax.swing.JFrame {
                 .addComponent(jlbluserName)
                 .addContainerGap(19, Short.MAX_VALUE))
         );
+
+        btnVodjenje.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
+        btnVodjenje.setText("Vodjenje predmeta");
+        btnVodjenje.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVodjenjeActionPerformed(evt);
+            }
+        });
+
+        btnUnosVodjenja.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
+        btnUnosVodjenja.setText("Unos vodjenja");
+        btnUnosVodjenja.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUnosVodjenjaActionPerformed(evt);
+            }
+        });
 
         jMenuBar1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
 
@@ -199,20 +221,30 @@ public class GlavnaFormaKlijent extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(27, 27, 27)
-                .addComponent(jbtnLogout, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(21, Short.MAX_VALUE))
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(btnVodjenje, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jbtnLogout, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(btnUnosVodjenja, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btnVodjenje, javax.swing.GroupLayout.DEFAULT_SIZE, 51, Short.MAX_VALUE)
+                    .addComponent(btnUnosVodjenja, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(21, 21, 21)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jbtnLogout, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(19, Short.MAX_VALUE))
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jbtnLogout, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(14, Short.MAX_VALUE))
         );
 
         pack();
@@ -250,7 +282,19 @@ public class GlavnaFormaKlijent extends javax.swing.JFrame {
         fpt.setVisible(true);
     }//GEN-LAST:event_jMenuItem5ActionPerformed
 
+    private void btnVodjenjeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVodjenjeActionPerformed
+        fpv = new FormaPretragaVodjenja();
+        fpv.setVisible(true);
+    }//GEN-LAST:event_btnVodjenjeActionPerformed
+
+    private void btnUnosVodjenjaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUnosVodjenjaActionPerformed
+        fuv = new FormaUnosVodjenja(true, false, false);
+        fuv.setVisible(true);
+    }//GEN-LAST:event_btnUnosVodjenjaActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnUnosVodjenja;
+    private javax.swing.JButton btnVodjenje;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;

@@ -106,20 +106,20 @@ public class Vodjenje implements OpstiDomenskiObjekat {
     @Override
     public String vratiVrednostiZaInsert() {
         DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
-        return null + ", " + predmet.getPredmetID() + ", " + osumnjiceni.getOsumnjiceniID() + ", '" + df.format(datumOd) + "', '" + df.format(datumDo) + ", " + opis + "'";
+        return null + ", '" + predmet.getPredmetID() + "', '" + osumnjiceni.getOsumnjiceniID() + "', '" + df.format(datumOd) + "', '" + df.format(datumDo) + "', '" + opis + "'";
     }
 
     @Override
     public String vratiVrednostiZaUpdate() {
         DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
-        return "osumnjiceniID = " + osumnjiceni.getOsumnjiceniID() + ", predmetID= " + predmet.getPredmetID() + ", datumOd= '" 
-                + df.format(datumOd) + "', datumDo= '" 
-                + df.format(datumDo) + "', opis= " + opis + "' WHERE vodjenjeID= " + vodjenjeID;
+        return "osumnjiceniID = '" + osumnjiceni.getOsumnjiceniID() + "', predmetID= '" + predmet.getPredmetID() + "', datumOd= '"
+                + df.format(datumOd) + "', datumDo= '"
+                + df.format(datumDo) + "', opis= '" + opis + "' WHERE vodjenjeID= '" + vodjenjeID + "'";
     }
 
     @Override
     public String vratiUslovZaBrisanje() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return " vodjenjeID= " + vodjenjeID;
     }
 
     @Override
@@ -130,17 +130,33 @@ public class Vodjenje implements OpstiDomenskiObjekat {
             Date datumOd = rs.getDate("datumOd");
             Date datumDo = rs.getDate("datumDo");
             String opis = rs.getString("opis");
+
             int osumnjiceniID = rs.getInt("osumnjiceniID");
+            String imePrezime = rs.getString("imePrezime");
+            String JMBG = rs.getString("JMBG");
+            Date datumRodjenja = rs.getDate("datumRodjenja");
+            String adresa = rs.getString("adresa");
+            String zanimanje = rs.getString("zanimanje");
+            boolean osudjivanost = (rs.getInt("osudjivanost") == 1) ? true : false;
+            int mestoID = rs.getInt("mestoID");
+            Mesto mesto = new Mesto();
+            mesto.setMestoID(mestoID);
+
             int predmetID = rs.getInt("predmetID");
-            
-            Osumnjiceni o = new Osumnjiceni();
-            o.setOsumnjiceniID(osumnjiceniID);
-            Predmet p = new Predmet();
-            p.setPredmetID(predmetID);
-            
+            String delo = rs.getString("delo");
+            String opisDela = rs.getString("opisDela");
+            String obrazlozenje = rs.getString("obrazlozenje");
+            String stanjePredmeta = rs.getString("stanjePredmeta");
+            int tuzilacID = rs.getInt("tuzilacID");
+            Tuzilac tuzilac = new Tuzilac();
+            tuzilac.setTuzilacID(tuzilacID);
+
+            Osumnjiceni o = new Osumnjiceni(osumnjiceniID, imePrezime, JMBG, datumRodjenja, adresa, zanimanje, osudjivanost, mesto);
+            Predmet p = new Predmet(predmetID, delo, opisDela, obrazlozenje, stanjePredmeta, tuzilac);
+
             Vodjenje vodjenje = new Vodjenje(vodjenjeID, o, p, datumOd, datumDo, opis);
             listaVodjenja.add(vodjenje);
-        }   
+        }
         return listaVodjenja;
     }
 
@@ -161,6 +177,6 @@ public class Vodjenje implements OpstiDomenskiObjekat {
 
     @Override
     public String vratiUslovZaProveru() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return "where vodjenjeID= " + vodjenjeID;
     }
 }

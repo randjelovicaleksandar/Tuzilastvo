@@ -26,9 +26,6 @@ public class FormaPretragaPredmeta extends javax.swing.JFrame {
     private List<Predmet> listaPredmeta;
     private String[] poljaZaPretragu = {"Delo", "Stanje predmeta", "Tuzilac"};
 
-    /**
-     * Creates new form FormaPretragaClanova
-     */
     public FormaPretragaPredmeta() {
         initComponents();
         setLocationRelativeTo(null);
@@ -56,7 +53,7 @@ public class FormaPretragaPredmeta extends javax.swing.JFrame {
         jbtnPrikaziPodatke = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Pretraga clana");
+        setTitle("Pretraga predmeta");
         setResizable(false);
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Detalji pretrage predmeta", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 16))); // NOI18N

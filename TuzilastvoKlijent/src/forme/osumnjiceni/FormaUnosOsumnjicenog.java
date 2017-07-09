@@ -35,9 +35,6 @@ public class FormaUnosOsumnjicenog extends javax.swing.JFrame {
     boolean osudjivanost = false;
     ButtonGroup bg;
     
-    /**
-     * Creates new form FormaUnosClana
-     */
     public FormaUnosOsumnjicenog(boolean btnUnesi, boolean btnObrisi, boolean btnIzmeni, JFrame forma) {
         initComponents();
         
@@ -109,7 +106,7 @@ public class FormaUnosOsumnjicenog extends javax.swing.JFrame {
         jbtnIzmeni = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Unos clana");
+        setTitle("Unos osumnjicenog");
         setResizable(false);
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Detalji o osumnjicenom", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 16))); // NOI18N
@@ -365,8 +362,6 @@ public class FormaUnosOsumnjicenog extends javax.swing.JFrame {
     private void jbtnUnesiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnUnesiActionPerformed
         String imePrezime = jtxtIme.getText() + " " + jtxtPrezime.getText();
         Date datumRodjenja = jdcDatumRodjenja.getDate();
-//        System.out.println(((JTextField) jdcDatumUclanjenja.getDateEditor().getUiComponent()).getText());
-//        System.out.println(new SimpleDateFormat("yyyy-MM-dd").format(jdcDatumUclanjenja.getDate()));
         String JMBG = jtxtMaticniBroj.getText();
         String adresa = jtxtAdresa.getText();
         String zanimanje = jtxtZanimanje.getText();
@@ -388,7 +383,6 @@ public class FormaUnosOsumnjicenog extends javax.swing.JFrame {
                 }
             }
         } catch (Exception ex) {
-//            JOptionPane.showMessageDialog(this, "Sistem ne moze da unese clana!");
             JOptionPane.showMessageDialog(this, ex.getMessage());
         }
     }//GEN-LAST:event_jbtnUnesiActionPerformed
@@ -503,7 +497,7 @@ public class FormaUnosOsumnjicenog extends javax.swing.JFrame {
 
     void postaviIzgledForme(int operacijaForme) {
         if (operacijaForme == OperacijaForme.UPRAVLJANJE) {
-            this.setTitle("Izmena/brisanje clana");
+            this.setTitle("Izmena/brisanje osumnjicenog");
             jbtnUnesi.setVisible(false);
             jbtnIzmeni.setVisible(true);
             jbtnObrisi.setVisible(true);
@@ -532,7 +526,6 @@ public class FormaUnosOsumnjicenog extends javax.swing.JFrame {
 
     public boolean validateFields() {
 
-        //ime, prezime, datumUclanjenja, brojRacuna, maticniBroj, ulica, broj, kontaktTelefon
         podesiLabele(true);
         podesiVrednostLabela("");
 

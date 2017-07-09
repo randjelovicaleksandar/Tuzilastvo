@@ -14,6 +14,7 @@ import model.OpstiDomenskiObjekat;
 import model.Osumnjiceni;
 import model.Predmet;
 import model.Tuzilac;
+import model.Vodjenje;
 import nit.KlijentNit;
 import so.OpstaSO;
 import so.korisnik.PronadjiZaposlenogSO;
@@ -25,6 +26,9 @@ import so.predmet.ArhivirajPredmetSO;
 import so.predmet.PronadjiPredmeteSO;
 import so.predmet.ZapamtiPredmetSO;
 import so.tuzilac.UcitajTuzioceSO;
+import so.vodjenje.ArhivirajVodjenjeSO;
+import so.vodjenje.PronadjiVodjenjaSO;
+import so.vodjenje.ZapamtiVodjenjeSO;
 
 
 /**
@@ -53,6 +57,12 @@ public class Kontroler {
         vratiOsumnjiceneSO.izvrsenjeSO(new Osumnjiceni());
         return ((UcitajOsumnjiceneSO) vratiOsumnjiceneSO).getListaOsumnjicenih();
     }
+    
+    public List<OpstiDomenskiObjekat> vratiVodjenja() throws Exception {
+        OpstaSO vratiVodjenjaSO = new PronadjiVodjenjaSO();
+        vratiVodjenjaSO.izvrsenjeSO(new Vodjenje());
+        return ((PronadjiVodjenjaSO) vratiVodjenjaSO).getListaVodjenja();
+    }
 
     public List<OpstiDomenskiObjekat> vratiMesta() throws Exception {
         OpstaSO vratiMestaSO = new UcitajMestaSO();
@@ -70,12 +80,21 @@ public class Kontroler {
         OpstaSO unosOsumnjicenogSO = new ZapamtiOsumnjicenogSO();
         unosOsumnjicenogSO.izvrsenjeSO(osumnjiceni);
     }
+    
+    public void dodajVodjenje(Vodjenje vodjenje) throws Exception {
+        OpstaSO unosVodjenjaSO = new ZapamtiVodjenjeSO();
+        unosVodjenjaSO.izvrsenjeSO(vodjenje);
+    }
 
     public void izmeniOsumnjicenog(Osumnjiceni osumnjiceni) throws Exception {
         OpstaSO unosOsumnjicenogSO = new ZapamtiOsumnjicenogSO();
         unosOsumnjicenogSO.izvrsenjeSO(osumnjiceni);
     }
     
+    public void izmeniVodjenje(Vodjenje vodjenje) throws Exception {
+        OpstaSO izmenaVodjenjaSO = new ZapamtiVodjenjeSO();
+        izmenaVodjenjaSO.izvrsenjeSO(vodjenje);
+    }
     
     public void obrisiOsumnjicenog(Osumnjiceni osumnjiceni) throws Exception {
         OpstaSO brisanjeOsumnjicenogSO = new ArhivirajOsumnjicenogSO();
@@ -97,6 +116,11 @@ public class Kontroler {
         brisanjePredmetaSO.izvrsenjeSO(predmet);
     }
 
+     public void obrisiVodjenje(Vodjenje vodjenje) throws Exception {
+        OpstaSO brisanjeVodjenjaSO = new ArhivirajVodjenjeSO();
+        brisanjeVodjenjaSO.izvrsenjeSO(vodjenje);
+    }
+    
     public List<OpstiDomenskiObjekat> vratiTuzioce() throws Exception {
         OpstaSO vratiTuzioceSO = new UcitajTuzioceSO();
         vratiTuzioceSO.izvrsenjeSO(new Tuzilac());

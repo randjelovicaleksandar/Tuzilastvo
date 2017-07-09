@@ -28,9 +28,6 @@ public class FormaPretragaTuzilaca extends javax.swing.JFrame {
     private List<Tuzilac> listaTuzilaca;
     private String[] poljaZaPretragu = {"Ime i prezime", "Radni staz veci od", "Broj predmeta veci od", "Dostupnost"};
 
-    /**
-     * Creates new form FormaPretragaClanova
-     */
     public FormaPretragaTuzilaca() {
         initComponents();
         setLocationRelativeTo(null);
@@ -57,7 +54,7 @@ public class FormaPretragaTuzilaca extends javax.swing.JFrame {
         jtabelaTuzioci = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Pretraga clana");
+        setTitle("Pretraga tuzilaca");
         setResizable(false);
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Detalji pretrage tuzilaca", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 16))); // NOI18N
@@ -158,8 +155,6 @@ public class FormaPretragaTuzilaca extends javax.swing.JFrame {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(20, Short.MAX_VALUE))
         );
-
-        jPanel1.getAccessibleContext().setAccessibleName("Detalji pretrage tuzilaca");
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

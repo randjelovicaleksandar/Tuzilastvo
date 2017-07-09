@@ -25,9 +25,6 @@ public class FormaPretragaOsumnjicenih extends javax.swing.JFrame {
     private List<Osumnjiceni> listaOsumnjicenih;
     private String[] poljaZaPretragu = {"Ime i prezime", "JMBG", "Mesto", "Zanimanje"};
 
-    /**
-     * Creates new form FormaPretragaClanova
-     */
     public FormaPretragaOsumnjicenih() {
         initComponents();
         setLocationRelativeTo(null);
@@ -55,10 +52,10 @@ public class FormaPretragaOsumnjicenih extends javax.swing.JFrame {
         jbtnPrikaziPodatke = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Pretraga clana");
+        setTitle("Pretraga osumnjicenih");
         setResizable(false);
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Detalji pretrage clana", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 16))); // NOI18N
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Detalji pretrage osumnjicenih", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 16))); // NOI18N
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
         jLabel1.setText("Kriterijum pretrage:");
