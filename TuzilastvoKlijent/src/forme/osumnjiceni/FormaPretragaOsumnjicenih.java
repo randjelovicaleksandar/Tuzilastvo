@@ -176,6 +176,7 @@ public class FormaPretragaOsumnjicenih extends javax.swing.JFrame {
         fuo.postaviPodatkeOOsumnjicenom(osumnjiceni);
 //        fuo.postaviIzgledForme(OperacijaForme.UPRAVLJANJE);
         fuo.setVisible(true);
+        JOptionPane.showMessageDialog(null, "Podaci o osumnjičenom uspešno prikazani");
     }//GEN-LAST:event_jbtnPrikaziPodatkeActionPerformed
 
     private void jtabelaOsumnjiceniMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtabelaOsumnjiceniMouseClicked
@@ -227,6 +228,8 @@ public class FormaPretragaOsumnjicenih extends javax.swing.JFrame {
         if(filtriranaListaOsumnjicenih.isEmpty()) {
             JOptionPane.showMessageDialog(null, "Sistem ne moze da nadje osumnjicenog po zadatoj vrednosti");
             return;
+        } else {
+            JOptionPane.showMessageDialog(null, "Osumnjičeni su uspešno prikazani");
         }
         ModelTabeleOsumnjiceni model = new ModelTabeleOsumnjiceni(filtriranaListaOsumnjicenih);
         jtabelaOsumnjiceni.setModel(model);

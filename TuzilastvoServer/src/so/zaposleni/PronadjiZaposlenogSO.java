@@ -3,10 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package so.korisnik;
+package so.zaposleni;
 
 import dbb.DBBroker;
-import model.Korisnik;
+import model.Zaposleni;
 import so.OpstaSO;
 
 /**
@@ -31,7 +31,7 @@ public class PronadjiZaposlenogSO extends OpstaSO {
 
     @Override
     protected void izvrsiKonkretnuOperaciju(Object obj) throws Exception {
-        rezultat = DBBroker.getInstance().logovanje((Korisnik) obj);
+        rezultat = DBBroker.getInstance().logovanje((Zaposleni) obj);
     }
     
 }

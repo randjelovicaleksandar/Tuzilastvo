@@ -8,7 +8,7 @@ package kontroler;
 import forme.GlavnaFormaServer;
 import java.util.LinkedList;
 import java.util.List;
-import model.Korisnik;
+import model.Zaposleni;
 import model.Mesto;
 import model.OpstiDomenskiObjekat;
 import model.Osumnjiceni;
@@ -17,7 +17,7 @@ import model.Tuzilac;
 import model.Vodjenje;
 import nit.KlijentNit;
 import so.OpstaSO;
-import so.korisnik.PronadjiZaposlenogSO;
+import so.zaposleni.PronadjiZaposlenogSO;
 import so.mesto.UcitajMestaSO;
 import so.osumnjiceni.ArhivirajOsumnjicenogSO;
 import so.osumnjiceni.UcitajOsumnjiceneSO;
@@ -127,9 +127,9 @@ public class Kontroler {
         return ((UcitajTuzioceSO) vratiTuzioceSO).getListaTuzioca();
     }
 
-    public boolean ulogujSe(Korisnik korisnik) throws Exception {
+    public boolean ulogujSe(Zaposleni zaposleni) throws Exception {
         OpstaSO pronadjiZaposlenogSO = new PronadjiZaposlenogSO();
-        pronadjiZaposlenogSO.izvrsenjeSO(korisnik);
+        pronadjiZaposlenogSO.izvrsenjeSO(zaposleni);
         return ((PronadjiZaposlenogSO) pronadjiZaposlenogSO).isRezultat();
     }
 
@@ -140,7 +140,7 @@ public class Kontroler {
 
     public void obrisiKlijentskuNit(KlijentNit klijentskaNit) {
         for (KlijentNit klijentNit : listaKlijentskihNiti) {
-            if (klijentNit.getKorisnik().getKorisnickoIme().equals(klijentskaNit.getKorisnik().getKorisnickoIme())) {
+            if (klijentNit.getZaposleni().getKorisnickoIme().equals(klijentskaNit.getZaposleni().getKorisnickoIme())) {
                 listaKlijentskihNiti.remove(klijentNit);
                 gf.obrisiRed(klijentNit);
                 return;

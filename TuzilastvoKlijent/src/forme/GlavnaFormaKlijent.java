@@ -149,7 +149,7 @@ public class GlavnaFormaKlijent extends javax.swing.JFrame {
         jMenu1.setMargin(new java.awt.Insets(0, 5, 0, 5));
 
         jMenuItem2.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
-        jMenuItem2.setText("Prikaz osumnjicenih");
+        jMenuItem2.setText("Pretraga osumnjicenih");
         jMenuItem2.setActionCommand("Pretraga osumnjicenih");
         jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

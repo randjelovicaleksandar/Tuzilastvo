@@ -9,7 +9,7 @@ import forme.GlavnaFormaKlijent;
 import java.io.IOException;
 import javax.swing.JOptionPane;
 import komunikacija.Komunikacija;
-import model.Korisnik;
+import model.Zaposleni;
 import transfer.TransferObjekatOdgovor;
 import transfer.TransferObjekatZahtev;
 import util.Operacija;
@@ -50,7 +50,7 @@ public class LoginForma extends javax.swing.JFrame {
         jtxtPort = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Logovanje korisnika");
+        setTitle("Logovanje zaposlenog");
         setResizable(false);
 
         jbtnUlogujSe.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
@@ -187,7 +187,7 @@ public class LoginForma extends javax.swing.JFrame {
         
         try {
             if (validacija(userName, sifra)) {
-                Korisnik k = new Korisnik(userName, sifra);
+                Zaposleni k = new Zaposleni(userName, sifra);
 
                 TransferObjekatZahtev zahtev = new TransferObjekatZahtev();
                 zahtev.setOperacija(Operacija.LOGIN);

@@ -14,7 +14,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import kontroler.Kontroler;
-import model.Korisnik;
+import model.Zaposleni;
 import model.OpstiDomenskiObjekat;
 import model.Osumnjiceni;
 import model.Predmet;
@@ -31,7 +31,7 @@ public class KlijentNit extends Thread {
 
     private Socket soket;
     private boolean kraj = false;
-    private Korisnik korisnik;
+    private Zaposleni zaposleni;
     private GlavnaFormaServer gf;
 
     public KlijentNit(Socket soket) {
@@ -68,8 +68,8 @@ public class KlijentNit extends Thread {
             try {
                 switch (zahtev.getOperacija()) {
                     case Operacija.LOGIN:
-                        korisnik = (Korisnik) zahtev.getParametar();
-                        if (Kontroler.getInstance().ulogujSe(korisnik)) {
+                        zaposleni = (Zaposleni) zahtev.getParametar();
+                        if (Kontroler.getInstance().ulogujSe(zaposleni)) {
                             odgovor.setPoruka("Uspesno ste se ulogovali.");
                             Kontroler.getInstance().dodajKlijentskuNit(this);
                         } else {
@@ -148,7 +148,7 @@ public class KlijentNit extends Thread {
                         break; 
                     case Operacija.KRAJ:
                         Kontroler.getInstance().obrisiKlijentskuNit(this);
-                        odgovor.setPoruka("Izlogovao se korisnik!");
+                        odgovor.setPoruka("Izlogovao se zaposleni!");
                         kraj = true;
                         break;
                 }
@@ -176,12 +176,12 @@ public class KlijentNit extends Thread {
         this.kraj = kraj;
     }
 
-    public Korisnik getKorisnik() {
-        return korisnik;
+    public Zaposleni getZaposleni() {
+        return zaposleni;
     }
 
-    public void setKorisnik(Korisnik korisnik) {
-        this.korisnik = korisnik;
+    public void setZaposleni(Zaposleni zaposleni) {
+        this.zaposleni = zaposleni;
     }
 
     public void prekid() {

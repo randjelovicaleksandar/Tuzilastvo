@@ -379,6 +379,7 @@ public class FormaUnosOsumnjicenog extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(this, "Sistem je zapamtio osumnjicenog!");
                     this.dispose();
                 } else {
+                    JOptionPane.showMessageDialog(this, "Sistem nije uspeo da zapamti osumnjicenog!");
                     throw (Exception) odgovor.getIzuzetak();
                 }
             }
@@ -435,7 +436,8 @@ public class FormaUnosOsumnjicenog extends javax.swing.JFrame {
                 }
             }
         } catch (Exception ex) {
-            JOptionPane.showMessageDialog(this, ex.getMessage());
+//            JOptionPane.showMessageDialog(this, ex.getMessage());
+                JOptionPane.showMessageDialog(this, "Sistem nije uspeo da zapamti osumnjičenog");
         }
     }//GEN-LAST:event_jbtnIzmeniActionPerformed
 

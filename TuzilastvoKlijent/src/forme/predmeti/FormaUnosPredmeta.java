@@ -38,21 +38,19 @@ public class FormaUnosPredmeta extends javax.swing.JFrame {
         jbtnUnesi.setEnabled(btnUnesi);
         jbtnObrisi.setEnabled(btnObrisi);
         jbtnIzmeni.setEnabled(btnIzmeni);
-        
+
         postaviKomponente();
 
-        
     }
-    
+
     public FormaUnosPredmeta(boolean btnUnesi, boolean btnObrisi, boolean btnIzmeni) {
         initComponents();
         jbtnUnesi.setEnabled(btnUnesi);
         jbtnObrisi.setEnabled(btnObrisi);
         jbtnIzmeni.setEnabled(btnIzmeni);
-        
+
         postaviKomponente();
 
-        
     }
 
     public FormaUnosPredmeta(FormaPretragaPredmeta formaPretragaPredmeta) {
@@ -291,7 +289,8 @@ public class FormaUnosPredmeta extends javax.swing.JFrame {
                 }
             }
         } catch (Exception ex) {
-            JOptionPane.showMessageDialog(this, ex.getMessage());
+//            JOptionPane.showMessageDialog(this, ex.getMessage());
+            JOptionPane.showMessageDialog(this, "Sistem nije uspeo da zapamti predmet");
         }
     }//GEN-LAST:event_jbtnUnesiActionPerformed
 
@@ -319,7 +318,7 @@ public class FormaUnosPredmeta extends javax.swing.JFrame {
             TransferObjekatZahtev zahtev = new TransferObjekatZahtev();
             if (validateFields()) {
                 zahtev.setOperacija(Operacija.IZMENA_PREDMETA);
-                Predmet predmetIzmena = new Predmet(this.predmet.getPredmetID(), jtxtDelo.getText(), jTextOpisDela.getText(), jTextObrazlozenje.getText(), jtxtStanjePredmeta.getText() , (Tuzilac) jcmbTuzilac.getSelectedItem());
+                Predmet predmetIzmena = new Predmet(this.predmet.getPredmetID(), jtxtDelo.getText(), jTextOpisDela.getText(), jTextObrazlozenje.getText(), jtxtStanjePredmeta.getText(), (Tuzilac) jcmbTuzilac.getSelectedItem());
                 zahtev.setParametar(predmetIzmena);
                 Komunikacija.getInstance().posaljiZahtev(zahtev);
                 TransferObjekatOdgovor odgovor = Komunikacija.getInstance().primiOdgovor();
@@ -459,5 +458,4 @@ public class FormaUnosPredmeta extends javax.swing.JFrame {
         this.repaint();
     }
 
-   
-} 
+}

@@ -41,9 +41,9 @@ public class ModelTabeleKorisnici extends AbstractTableModel {
         KlijentNit klijentNit = listaKlijentskihNiti.get(rowIndex);
         switch (columnIndex) {
             case 0:
-                return klijentNit.getKorisnik().getKorisnickoIme();
+                return klijentNit.getZaposleni().getKorisnickoIme();
             case 1:
-                return klijentNit.getKorisnik().getSifra();
+                return klijentNit.getZaposleni().getSifra();
             default:
                 return "n/a";
         }

@@ -13,32 +13,32 @@ import java.util.Objects;
  *
  * @author Aleksandar Randjelovic
  */
-public class Korisnik implements OpstiDomenskiObjekat {
+public class Zaposleni implements OpstiDomenskiObjekat {
 
-    private int korisnikID;
+    private int zaposleniID;
     private String korisnickoIme;
     private String sifra;
 
-    public Korisnik() {
+    public Zaposleni() {
     }
 
-    public Korisnik(int korisnikID, String korisnickoIme, String sifra) {
-        this.korisnikID = korisnikID;
+    public Zaposleni(int zaposleniID, String korisnickoIme, String sifra) {
+        this.zaposleniID = zaposleniID;
         this.korisnickoIme = korisnickoIme;
         this.sifra = sifra;
     }
 
-    public Korisnik(String korisnickoIme, String sifra) {
+    public Zaposleni(String korisnickoIme, String sifra) {
         this.korisnickoIme = korisnickoIme;
         this.sifra = sifra;
     }
 
-    public int getKorisnikID() {
-        return korisnikID;
+    public int getZaposleniID() {
+        return zaposleniID;
     }
 
-    public void setKorisnikID(int korisnikID) {
-        this.korisnikID = korisnikID;
+    public void setZaposleniID(int zaposleniID) {
+        this.zaposleniID = zaposleniID;
     }
 
     public String getKorisnickoIme() {
@@ -73,8 +73,8 @@ public class Korisnik implements OpstiDomenskiObjekat {
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final Korisnik other = (Korisnik) obj;
-        if (this.korisnikID != other.korisnikID) {
+        final Zaposleni other = (Zaposleni) obj;
+        if (this.zaposleniID != other.zaposleniID) {
             return false;
         }
         if (!Objects.equals(this.korisnickoIme, other.korisnickoIme)) {
@@ -88,7 +88,7 @@ public class Korisnik implements OpstiDomenskiObjekat {
 
     @Override
     public String vratiNazivTabele() {
-        return "korisnik";
+        return "zaposleni";
     }
 
     @Override

@@ -178,6 +178,7 @@ public class FormaPretragaPredmeta extends javax.swing.JFrame {
         FormaUnosPredmeta fup = new FormaUnosPredmeta(false,true,true,this);
         fup.postaviPodatkeOPredemtu(predemt);
         fup.setVisible(true);
+        JOptionPane.showMessageDialog(null, "Podaci o predmetu uspešno prikazani");
     }//GEN-LAST:event_jbtnPrikaziPodatkeActionPerformed
 
     private void jtabelaPredmetiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtabelaPredmetiMouseClicked
@@ -222,6 +223,8 @@ public class FormaPretragaPredmeta extends javax.swing.JFrame {
         if(filtriranaListaPredmeta.isEmpty()) {
             JOptionPane.showMessageDialog(null, "Sistem ne moze da nadje predmet po zadatoj vrednosti");
             return;
+        }  else {
+            JOptionPane.showMessageDialog(null, "Predmeti su uspešno prikazani");
         }
         ModelTabelePredmet model = new ModelTabelePredmet(filtriranaListaPredmeta);
         jtabelaPredmeti.setModel(model);

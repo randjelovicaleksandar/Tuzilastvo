@@ -5,6 +5,10 @@
  */
 package so.predmet;
 
+import dbb.DBBroker;
+import java.util.List;
+import model.OpstiDomenskiObjekat;
+import model.Predmet;
 import so.OpstaSO;
 
 /**
@@ -13,12 +17,23 @@ import so.OpstaSO;
  */
 public class UcitajPredmetSO extends OpstaSO {
 
+    private List<OpstiDomenskiObjekat> listaPredmeta;
+
+    public List<OpstiDomenskiObjekat> getListaPredmeta() {
+        return listaPredmeta;
+    }
+
+    public void setListaPredmeta(List<OpstiDomenskiObjekat> listaPredmeta) {
+        this.listaPredmeta = listaPredmeta;
+    }
+    
     @Override
     protected void proveriPreduslov(Object obj) throws Exception {
     }
 
     @Override
     protected void izvrsiKonkretnuOperaciju(Object obj) throws Exception {
+        listaPredmeta = DBBroker.getInstance().vratiSveJoin((Predmet) obj);
     }
     
 }
